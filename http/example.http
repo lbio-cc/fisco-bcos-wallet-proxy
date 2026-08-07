@@ -1,0 +1,54 @@
+@host=http://127.0.0.1:28081
+@route=example
+
+### Health check
+GET {{host}}/actuator/health
+Accept: application/json
+
+### Get latest block number
+POST {{host}}/rpc/{{route}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "getBlockNumber",
+  "params": [],
+  "id": 1
+}
+
+### Get block by number
+POST {{host}}/rpc/{{route}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "getBlockByNumber",
+  "params": [1, false],
+  "id": 2
+}
+
+### Read contract state with call
+POST {{host}}/rpc/{{route}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "call",
+  "params": ["0x0000000000000000000000000000000000000000", "0x00000000"],
+  "id": 3
+}
+
+### Query account balance
+POST {{host}}/rpc/{{route}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "getBalance",
+  "params": ["0x0000000000000000000000000000000000000000"],
+  "id": 4
+}

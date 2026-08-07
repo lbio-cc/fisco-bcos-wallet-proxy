@@ -1,0 +1,15 @@
+[cryptoMaterial]
+certPath = "config/fisco/example/certs"
+useSMCrypto = "false"
+
+[network]
+messageTimeout = "10000"
+defaultGroup = "group0"
+peers = ["127.0.0.1:20200"]
+
+[account]
+keyStoreDir = "config/fisco/example/accounts"
+accountFileFormat = "pem"
+
+[threadPool]
+maxBlockingQueueSize = "102400"

@@ -1,0 +1,28 @@
+# Build output
+/target/
+*.class
+
+# IDE files
+/.idea/
+*.iml
+
+# Runtime logs
+/logs/
+/log/
+*.log
+*.log.gz
+
+# Local environment overrides
+.env
+/config/application-chain.yml
+
+# FISCO BCOS SDK runtime material
+/config/fisco/**/accounts/
+/config/fisco/**/certs/*
+!/config/fisco/**/certs/.gitkeep
+
+# Local caches
+/.mvn/wrapper/maven-wrapper.jar
+/.maven-repository/
+.maven-tool/
+.sdk-source/

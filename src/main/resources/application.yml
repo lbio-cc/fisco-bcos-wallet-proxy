@@ -1,0 +1,34 @@
+server:
+  port: ${SERVER_PORT:28081}
+  tomcat:
+    max-swallow-size: 2MB
+  error:
+    include-message: never
+    include-stacktrace: never
+
+spring:
+  application:
+    name: fisco-bcos-wallet-proxy
+  config:
+    import:
+      - classpath:application-chain.yml
+      - optional:file:./config/application-chain.yml
+  servlet:
+    multipart:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  file:
+    name: ${LOG_FILE:logs/fisco-bcos-wallet-proxy.log}
+  logback:
+    rollingpolicy:
+      file-name-pattern: ${LOG_ROLLING_PATTERN:logs/fisco-bcos-wallet-proxy.%d{yyyy-MM-dd}.%i.log.gz}
+      max-file-size: ${LOG_MAX_FILE_SIZE:20MB}
+      max-history: ${LOG_MAX_HISTORY:30}
+      total-size-cap: ${LOG_TOTAL_SIZE_CAP:1GB}

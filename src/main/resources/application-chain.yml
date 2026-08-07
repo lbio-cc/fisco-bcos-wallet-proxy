@@ -1,0 +1,45 @@
+# Default route configuration for local development.
+# Copy this file to ./config/application-chain.yml in deployments when environment-specific overrides are needed.
+proxy:
+  max-batch-size: 20
+  max-request-bytes: 2097152
+
+  # Global allowlist used when a route does not define its own allowed-methods.
+  allowed-methods:
+    - getBlockNumber
+    - getBlockByNumber
+    - getBlockByHash
+    - getBlockHashByNumber
+    - getTransaction
+    - getTransactionReceipt
+    - getCode
+    - getTotalTransactionCount
+    - getPendingTxSize
+    - call
+    - getGroupList
+    - getGroupInfo
+    - getGroupInfoList
+    - getGroupNodeInfo
+    - getPeers
+    - getGroupPeers
+    - getObserverList
+    - getSealerList
+    - getConsensusStatus
+    - getSyncStatus
+    - getSystemConfigByKey
+    - getBalance
+    - sendTransaction
+
+  # Methods that should be forwarded without injecting group and target-node params.
+  passthrough-methods:
+    - getGroupList
+    - getGroupInfoList
+    - getPeers
+
+  groups:
+    example:
+      enabled: ${FISCO_EXAMPLE_ENABLED:true}
+      gm: ${FISCO_EXAMPLE_GM:false}
+      group-id: ${FISCO_EXAMPLE_GROUP_ID:group0}
+      sdk-config: ${FISCO_EXAMPLE_CONFIG:config/fisco/example/config.toml}
+      # Optional: define allowed-methods here to override the global allowlist for this route.
